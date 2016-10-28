@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="#AAA">
+
+    <FrameLayout
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="64dp">
+
+        <ImageView
+            android:id="@+id/simple_refresh_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:src="@drawable/ic_simple_refresh_arrow_down"/>
+
+        <ProgressBar
+            android:id="@+id/simple_refresh_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/simple_refresh_progress"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/simple_refresh_status_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/simple_refresh_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="下拉刷新"/>
+
+        <TextView
+            android:id="@+id/simple_refresh_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            tools:text="最近更新：10:10"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/simple_refresh_complete_status_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/simple_refresh_complete_status_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            tools:src="@drawable/ic_simple_refresh_succeed"/>
+
+        <TextView
+            android:id="@+id/simple_refresh_complete_status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="刷新成功"/>
+    </LinearLayout>
+
+</RelativeLayout>
