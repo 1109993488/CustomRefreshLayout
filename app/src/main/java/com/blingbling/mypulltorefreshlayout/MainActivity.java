@@ -1,5 +1,6 @@
 package com.blingbling.mypulltorefreshlayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,7 +10,7 @@ import com.blingbling.refreshlayout.BaseRefreshLayout;
 import com.blingbling.refreshlayout.simple.SimpleRefreshLayout;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private SimpleRefreshLayout refreshLayout;
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn1).setOnClickListener(this);
+        findViewById(R.id.btn2).setOnClickListener(this);
     }
 
 
@@ -44,4 +47,20 @@ public class MainActivity extends AppCompatActivity {
         refreshLayout.setEnabled(false);
     }
 
+    @Override public void onClick(View view) {
+        Class cls=null;
+        switch (view.getId()){
+            case R.id.btn1:
+                cls= com.blingbling.mypulltorefreshlayout.widget.Simple1RefreshLayout.class;
+                break;
+            case R.id.btn2:
+                cls= com.blingbling.mypulltorefreshlayout.widget.Simple2RefreshLayout.class;
+                break;
+        }
+        if(cls!=null){
+            Intent intent=new Intent(this,SimpleActivity.class);
+            intent.putExtra(SimpleActivity.REFRESH_LAYOUT_CLASS,cls);
+            startActivity(intent);
+        }
+    }
 }

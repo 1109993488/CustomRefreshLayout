@@ -59,45 +59,48 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <Button
+                    android:id="@+id/btn1"
+                    android:text="例子1(头部有背景-头部自己移动)"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="#490"/>
+                    android:layout_height="100dp"/>
 
-                <TextView
+                <Button
+                    android:id="@+id/btn2"
+                    android:text="例子2(头部有背景-头部和内容一起移动)"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="#890"/>
+                    />
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="#490"/>
+                    />
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="#890"/>
+                    />
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="#490"/>
+                    />
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="#890"/>
+                    />
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="#490"/>
+                    />
 
-                <TextView
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="#890"/>
+                    />
             </LinearLayout>
         </ScrollView>
     </com.blingbling.refreshlayout.simple.SimpleRefreshLayout>
