@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -8,7 +9,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -28,4 +29,14 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.0'
     testCompile 'junit:junit:4.12'
+}
+
+
+publish {
+    userOrg = '1109993488'
+    groupId = 'com.blingbling'
+    artifactId = 'custom-refresh-layout'
+    publishVersion = '1.0.0'
+    desc = '可以自定义刷新样式的下拉刷新'
+    website = 'https://github.com/1109993488/CustomRefreshLayout'
 }
