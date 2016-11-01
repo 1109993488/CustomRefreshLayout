@@ -1,4 +1,4 @@
-package com.blingbling.refreshlayout;
+package com.blingbling.customrefreshlayoutlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -119,21 +119,10 @@ public abstract class BaseRefreshLayout extends ViewGroup implements NestedScrol
         reset();
     }
 
-    /**
-     * Simple constructor to use when creating a SwipeRefreshLayout from code.
-     *
-     * @param context
-     */
     public BaseRefreshLayout(Context context) {
         this(context, null);
     }
 
-    /**
-     * Constructor that is called when inflating SwipeRefreshLayout from XML.
-     *
-     * @param context
-     * @param attrs
-     */
     public BaseRefreshLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
@@ -177,6 +166,7 @@ public abstract class BaseRefreshLayout extends ViewGroup implements NestedScrol
     /**
      * Set the listener to be notified when a refresh is triggered via the swipe
      * gesture.
+     * @param listener 刷新回调
      */
     public void setOnRefreshListener(OnRefreshListener listener) {
         mListener = listener;

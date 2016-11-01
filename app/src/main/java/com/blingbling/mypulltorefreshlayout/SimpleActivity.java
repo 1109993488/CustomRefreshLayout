@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 
-import com.blingbling.refreshlayout.BaseRefreshLayout;
+import com.blingbling.customrefreshlayoutlibrary.BaseRefreshLayout;
 
 import java.lang.reflect.InvocationTargetException;
 

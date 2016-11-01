@@ -1,10 +1,10 @@
-package com.blingbling.refreshlayout.simple;
+package com.blingbling.customrefreshlayoutlibrary.simple;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.blingbling.refreshlayout.BaseHeaderView;
-import com.blingbling.refreshlayout.BaseRefreshLayout;
+import com.blingbling.customrefreshlayoutlibrary.BaseHeaderView;
+import com.blingbling.customrefreshlayoutlibrary.BaseRefreshLayout;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.blingbling.refreshlayout;
+package com.blingbling.customrefreshlayoutlibrary;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
@@ -33,7 +33,7 @@ public abstract class BaseHeaderView extends FrameLayout {
 
     /**
      * 下拉刷新，还没有达到可以刷新状态，从开始位置移动到当前位置
-     * @param progress (<tt>progress &gt;= 0 && progress &lt; 1</tt>)
+     * @param progress (<tt>progress &gt;= 0 &amp;&amp; progress &lt; 1</tt>)
      */
     protected abstract void onRefreshBefore(float progress);
 
@@ -56,14 +56,14 @@ public abstract class BaseHeaderView extends FrameLayout {
 
     /**
      * 取消刷新，从当前位置移动到初始位置，没有超过可刷新的距离
-     * @param progress (<tt>progress &gt;= 0 && progress &lt; 1</tt>)
+     * @param progress (<tt>progress &gt;= 0 &amp;&amp; progress &lt; 1</tt>)
      */
     protected abstract void onRefreshCancel(float progress);
 
     /**
      * 刷新完成，从刷新位置移动到初始位置，分刷新成功和失败
      * @param isSuccess true为刷新结果成功，false为刷新结果失败
-     * @param progress (<tt>progress &gt;= 0 && progress &lt; 1</tt>)
+     * @param progress (<tt>progress &gt;= 0 &amp;&amp; progress &lt; 1</tt>)
      */
     protected abstract void onRefreshComplete(boolean isSuccess, float progress);
 }

@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.blingbling.mypulltorefreshlayout.R;
-import com.blingbling.refreshlayout.BaseHeaderView;
-import com.blingbling.refreshlayout.BaseRefreshLayout;
+import com.blingbling.customrefreshlayoutlibrary.BaseHeaderView;
+import com.blingbling.customrefreshlayoutlibrary.BaseRefreshLayout;
 
 /**
  * Created by BlingBling on 2016/11/1.

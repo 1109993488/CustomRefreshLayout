@@ -1,4 +1,4 @@
-package com.blingbling.refreshlayout.simple;
+package com.blingbling.customrefreshlayoutlibrary.simple;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.blingbling.refreshlayout.BaseHeaderView;
-import com.blingbling.refreshlayout.R;
+import com.blingbling.customrefreshlayout.R;
+import com.blingbling.customrefreshlayoutlibrary.BaseHeaderView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.blingbling.refreshlayout.BaseRefreshLayout;
-import com.blingbling.refreshlayout.simple.SimpleRefreshLayout;
+import com.blingbling.customrefreshlayoutlibrary.BaseRefreshLayout;
+import com.blingbling.customrefreshlayoutlibrary.simple.SimpleRefreshLayout;
+import com.blingbling.mypulltorefreshlayout.widget.Simple1RefreshLayout;
+import com.blingbling.mypulltorefreshlayout.widget.Simple2RefreshLayout;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -51,10 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Class cls=null;
         switch (view.getId()){
             case R.id.btn1:
-                cls= com.blingbling.mypulltorefreshlayout.widget.Simple1RefreshLayout.class;
+                cls= Simple1RefreshLayout.class;
                 break;
             case R.id.btn2:
-                cls= com.blingbling.mypulltorefreshlayout.widget.Simple2RefreshLayout.class;
+                cls= Simple2RefreshLayout.class;
                 break;
         }
         if(cls!=null){

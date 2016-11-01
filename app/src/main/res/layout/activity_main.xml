@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
-    <com.blingbling.refreshlayout.simple.SimpleRefreshLayout
+    <com.blingbling.customrefreshlayoutlibrary.simple.SimpleRefreshLayout
         android:layout_width="match_parent"
         android:id="@+id/swipe"
         android:layout_height="0dp"
@@ -103,5 +103,5 @@
                     />
             </LinearLayout>
         </ScrollView>
-    </com.blingbling.refreshlayout.simple.SimpleRefreshLayout>
+    </com.blingbling.customrefreshlayoutlibrary.simple.SimpleRefreshLayout>
 </LinearLayout>
