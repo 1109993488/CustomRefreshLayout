@@ -532,15 +532,13 @@ public abstract class BaseRefreshLayout extends ViewGroup implements NestedScrol
     }
 
     private void moveSpinner(float overscrollTop) {
-        float originalDragPercent = overscrollTop / mTotalDragDistance;
+        float originalDragPercent = overscrollTop / Math.abs(mOriginalOffsetTop);
 
         float dragPercent = Math.min(1f, Math.abs(originalDragPercent));
-        float extraOS = Math.abs(overscrollTop) - mTotalDragDistance;
-        float slingshotDist = mTotalDragDistance;
-        float tensionSlingshotPercent = Math.max(0, Math.min(extraOS, slingshotDist * 2)
-                / slingshotDist);
-        float tensionPercent = (float) ((tensionSlingshotPercent / 4) - Math.pow(
-                (tensionSlingshotPercent / 4), 2)) * 2f;
+        float extraOS = Math.abs(overscrollTop) - Math.abs(mOriginalOffsetTop);
+        float slingshotDist = Math.abs(mOriginalOffsetTop);
+        float tensionSlingshotPercent = Math.max(0, Math.min(extraOS, slingshotDist * 2) / slingshotDist);
+        float tensionPercent = (float) ((tensionSlingshotPercent / 4) - Math.pow((tensionSlingshotPercent / 4), 2)) * 2f;
         float extraMove = (slingshotDist) * tensionPercent * 2;
 
         int targetY = mOriginalOffsetTop + (int) ((slingshotDist * dragPercent) + extraMove);
@@ -699,7 +697,8 @@ public abstract class BaseRefreshLayout extends ViewGroup implements NestedScrol
         if (!requiresUpdate) {
             return;
         }
-        float progress = 1 - 1.0f * mCurrentTargetOffsetTop / mOriginalOffsetTop;
+        int realyTargetOffsetTop = mCurrentTargetOffsetTop - (mOriginalOffsetTop + mTotalDragDistance);
+        float progress = 1 - 1.0f * realyTargetOffsetTop / -mTotalDragDistance;
         if (mIsBeingDragged) {
             if (progress >= 1) {
                 mHeaderView.onRefreshAfter(progress);
