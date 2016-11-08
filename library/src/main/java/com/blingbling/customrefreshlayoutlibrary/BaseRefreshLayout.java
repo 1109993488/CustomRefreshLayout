@@ -158,7 +158,7 @@ public abstract class BaseRefreshLayout extends ViewGroup implements NestedScrol
     }
 
     private void createProgressView() {
-        mHeaderView = (BaseHeaderView) onCreateHeaderView();
+        mHeaderView = onCreateHeaderView();
         addView(mHeaderView);
     }
 
@@ -413,6 +413,7 @@ public abstract class BaseRefreshLayout extends ViewGroup implements NestedScrol
                 mTotalUnconsumed -= dy;
                 consumed[1] = dy;
             }
+            mIsBeingDragged=true;
             moveSpinner(mTotalUnconsumed);
         }
 
@@ -436,6 +437,7 @@ public abstract class BaseRefreshLayout extends ViewGroup implements NestedScrol
         // Finish the spinner for nested scrolling if we ever consumed any
         // unconsumed nested scroll
         if (mTotalUnconsumed > 0) {
+            mIsBeingDragged=false;
             finishSpinner(mTotalUnconsumed);
             mTotalUnconsumed = 0;
         }
@@ -458,6 +460,7 @@ public abstract class BaseRefreshLayout extends ViewGroup implements NestedScrol
         final int dy = dyUnconsumed + mParentOffsetInWindow[1];
         if (dy < 0 && !canChildScrollUp()) {
             mTotalUnconsumed += Math.abs(dy);
+            mIsBeingDragged=true;
             moveSpinner(mTotalUnconsumed);
         }
     }
