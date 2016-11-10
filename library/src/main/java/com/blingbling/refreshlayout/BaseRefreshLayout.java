@@ -350,7 +350,7 @@ public abstract class BaseRefreshLayout extends RefreshLayout {
     /**
      * 停止刷新
      *
-     * @param isSuccess
+     * @param isSuccess 刷新结果
      */
     public void stopRefresh(boolean isSuccess) {
         isRefreshSuccess = isSuccess;
@@ -360,7 +360,7 @@ public abstract class BaseRefreshLayout extends RefreshLayout {
     /**
      * 停止加载更多
      *
-     * @param isSuccess
+     * @param isSuccess 加载更多结果
      */
     public void stopLoadMore(boolean isSuccess) {
         isLoadSuccess = isSuccess;

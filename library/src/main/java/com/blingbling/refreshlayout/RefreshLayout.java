@@ -47,12 +47,6 @@ abstract class RefreshLayout extends ViewGroup {
         }
     }
 
-    /**
-     * 测量方法  遍历左右子view进行测量  当子view显示状态为GONE的时候不测量
-     *
-     * @param widthMeasureSpec
-     * @param heightMeasureSpec
-     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -77,15 +71,6 @@ abstract class RefreshLayout extends ViewGroup {
 
     }
 
-    /**
-     * 遍历所有子view 区分头部放置viewgrop的上面 底部放置viewgrop的下面 剩下的按顺序摆放
-     *
-     * @param changed
-     * @param l
-     * @param t
-     * @param r
-     * @param b
-     */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         if (mTarget == null) {
@@ -129,7 +114,7 @@ abstract class RefreshLayout extends ViewGroup {
     /**
      * 设置是否支持下拉刷新
      *
-     * @param isCanRefresh
+     * @param isCanRefresh 是否可以下拉刷新
      */
     public void setCanRefresh(boolean isCanRefresh) {
         this.mIsCanRefresh = isCanRefresh;
@@ -138,7 +123,7 @@ abstract class RefreshLayout extends ViewGroup {
     /**
      * 设置是否支持加载更多
      *
-     * @param isCanLoad
+     * @param isCanLoad 是否可以加载更多
      */
     public void setCanLoadMore(boolean isCanLoad) {
         this.mIsCanLoadMore = isCanLoad;
