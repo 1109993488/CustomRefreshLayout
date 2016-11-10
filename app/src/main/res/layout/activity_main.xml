@@ -34,74 +34,19 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="enable true"
-                android:onClick="enableTrue"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="enable false"
-                android:onClick="enableFalse"
+                android:text="simple2"
+                android:onClick="simple"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
-    <com.blingbling.customrefreshlayoutlibrary.simple.SimpleRefreshLayout
+    <com.blingbling.refreshlayout.simple.SimpleRefreshLayout
         android:layout_width="match_parent"
         android:id="@+id/swipe"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <ScrollView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btn1"
-                    android:text="例子1(头部有背景-头部自己移动)"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"/>
-
-                <Button
-                    android:id="@+id/btn2"
-                    android:text="例子2(头部有背景-头部和内容一起移动)"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    />
-            </LinearLayout>
-        </ScrollView>
-    </com.blingbling.customrefreshlayoutlibrary.simple.SimpleRefreshLayout>
+            android:layout_height="match_parent"/>
+    </com.blingbling.refreshlayout.simple.SimpleRefreshLayout>
 </LinearLayout>

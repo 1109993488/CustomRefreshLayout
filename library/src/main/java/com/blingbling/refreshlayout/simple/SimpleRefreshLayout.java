@@ -1,14 +1,16 @@
-package com.blingbling.customrefreshlayoutlibrary.simple;
+package com.blingbling.refreshlayout.simple;
+
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.blingbling.customrefreshlayoutlibrary.BaseHeaderView;
-import com.blingbling.customrefreshlayoutlibrary.BaseRefreshLayout;
+import com.blingbling.refreshlayout.BaseFooterView;
+import com.blingbling.refreshlayout.BaseHeaderView;
+import com.blingbling.refreshlayout.BaseRefreshLayout;
 
 
 /**
- * Created by BlingBling on 2016/10/28.
+ * Created by zhouweilong on 2016/10/19.
  */
 
 public class SimpleRefreshLayout extends BaseRefreshLayout {
@@ -21,11 +23,11 @@ public class SimpleRefreshLayout extends BaseRefreshLayout {
         super(context, attrs);
     }
 
-    @Override protected boolean scrollHeaderAndContent() {
-        return true;
-    }
-
     @Override protected BaseHeaderView onCreateHeaderView() {
         return new SimpleHeaderView(getContext());
+    }
+
+    @Override protected BaseFooterView onCreateFooterView() {
+        return new SimpleFooterView(getContext());
     }
 }

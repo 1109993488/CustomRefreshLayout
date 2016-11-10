@@ -2,17 +2,17 @@ package com.blingbling.mypulltorefreshlayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.blingbling.customrefreshlayoutlibrary.BaseRefreshLayout;
-import com.blingbling.customrefreshlayoutlibrary.simple.SimpleRefreshLayout;
-import com.blingbling.mypulltorefreshlayout.widget.Simple1RefreshLayout;
-import com.blingbling.mypulltorefreshlayout.widget.Simple2RefreshLayout;
+import com.blingbling.refreshlayout.listener.OnRefreshListener;
+import com.blingbling.refreshlayout.simple.SimpleRefreshLayout;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements OnRefreshListener {
 
     private SimpleRefreshLayout refreshLayout;
 
@@ -21,48 +21,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        refreshLayout= (SimpleRefreshLayout) findViewById(R.id.swipe);
-        refreshLayout.setOnRefreshListener(new BaseRefreshLayout.OnRefreshListener() {
-            @Override public void onRefresh() {
-                Log.e("TAG","refreshLayout-------------onRefresh");
-            }
-        });
+        refreshLayout = (SimpleRefreshLayout) findViewById(R.id.swipe);
 
-        findViewById(R.id.btn1).setOnClickListener(this);
-        findViewById(R.id.btn2).setOnClickListener(this);
+        refreshLayout.setOnRefreshListener(this);
+
+        RecyclerView list = (RecyclerView) findViewById(R.id.list);
+        list.setLayoutManager(new LinearLayoutManager(this));
+
+        list.setAdapter(new RecyclerAdapter());
+
     }
 
 
     public void refresh(View view) {
-        refreshLayout.setRefreshing(true);
+        refreshLayout.autoRefresh();
     }
 
     public void complete(View view) {
-        refreshLayout.setRefreshing(false,true);
+        refreshLayout.stopRefresh(true);
     }
 
     public void enableTrue(View view) {
-        refreshLayout.setEnabled(true);
+        refreshLayout.setCanRefresh(true);
     }
 
     public void enableFalse(View view) {
-        refreshLayout.setEnabled(false);
+        refreshLayout.setCanRefresh(false);
     }
 
-    @Override public void onClick(View view) {
-        Class cls=null;
-        switch (view.getId()){
-            case R.id.btn1:
-                cls= Simple1RefreshLayout.class;
-                break;
-            case R.id.btn2:
-                cls= Simple2RefreshLayout.class;
-                break;
-        }
-        if(cls!=null){
-            Intent intent=new Intent(this,SimpleActivity.class);
-            intent.putExtra(SimpleActivity.REFRESH_LAYOUT_CLASS,cls);
-            startActivity(intent);
-        }
+    public void simple(View view) {
+        Class cls = com.blingbling.mypulltorefreshlayout.widget.SimpleRefreshLayout.class;
+        Intent intent = new Intent(this, SimpleActivity.class);
+        intent.putExtra(SimpleActivity.REFRESH_LAYOUT_CLASS, cls);
+        startActivity(intent);
+    }
+
+
+    @Override public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                refreshLayout.stopRefresh(true);
+            }
+        }, 1000);
+    }
+
+    @Override public void onLoadMore() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                refreshLayout.stopLoadMore(false);
+            }
+        }, 1000);
     }
 }

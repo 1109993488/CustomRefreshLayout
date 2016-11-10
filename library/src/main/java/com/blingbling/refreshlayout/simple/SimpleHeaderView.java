@@ -1,4 +1,4 @@
-package com.blingbling.customrefreshlayoutlibrary.simple;
+package com.blingbling.refreshlayout.simple;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.blingbling.customrefreshlayout.R;
-import com.blingbling.customrefreshlayoutlibrary.BaseHeaderView;
+import com.blingbling.refreshlayout.BaseHeaderView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,14 +47,14 @@ public class SimpleHeaderView extends BaseHeaderView {
     }
 
     @Override protected int getHeaderLayoutId() {
-        return R.layout.view_simple_refresh_header;
+        return R.layout.simple_view_refresh_header;
     }
 
     @Override protected int getHeaderContentId() {
         return 0;
     }
 
-    @Override public void onRefreshBefore(float progress) {
+    @Override public void onRefreshBefore(int scrollY, int refreshHeight, int headerHeight) {
         mStatus.setText("下拉刷新");
         mArrow.setImageResource(R.drawable.ic_simple_refresh_arrow_down);
         mProgress.setVisibility(GONE);
@@ -68,18 +68,25 @@ public class SimpleHeaderView extends BaseHeaderView {
         }
     }
 
-    @Override public void onRefreshAfter(float progress) {
+    @Override public void onRefreshAfter(int scrollY, int refreshHeight, int headerHeight) {
         mStatus.setText("松开刷新");
         mArrow.setImageResource(R.drawable.ic_simple_refresh_arrow_up);
     }
 
-    @Override public void onRefreshReady(float progress) {
+    @Override public void onRefreshReady(int scrollY, int refreshHeight, int headerHeight) {
         mStatus.setText("准备刷新");
         mArrow.setVisibility(GONE);
         mProgress.setVisibility(VISIBLE);
+        mStatusLayout.setVisibility(VISIBLE);
+        mCompleteStatusLayout.setVisibility(GONE);
+        if (TextUtils.isEmpty(mTime.getText())) {
+            mTime.setVisibility(GONE);
+        } else {
+            mTime.setVisibility(VISIBLE);
+        }
     }
 
-    @Override public void onRefreshing() {
+    @Override public void onRefreshing(int scrollY, int refreshHeight, int headerHeight) {
         mStatus.setText("正在刷新");
         mArrow.setVisibility(GONE);
         mProgress.setVisibility(VISIBLE);
@@ -87,11 +94,7 @@ public class SimpleHeaderView extends BaseHeaderView {
         mCompleteStatusLayout.setVisibility(GONE);
     }
 
-    @Override public void onRefreshCancel(float progress) {
-        mStatus.setText("取消刷新");
-    }
-
-    @Override public void onRefreshComplete(boolean isSuccess, float progress) {
+    @Override public void onRefreshComplete(boolean isSuccess, int scrollY, int refreshHeight, int headerHeight) {
         if (isSuccess) {
             mCompleteStatusIv.setImageResource(R.drawable.ic_simple_refresh_succeed);
             mCompleteStatusTv.setText("刷新成功");
@@ -104,5 +107,9 @@ public class SimpleHeaderView extends BaseHeaderView {
         mProgress.setVisibility(GONE);
         mStatusLayout.setVisibility(GONE);
         mCompleteStatusLayout.setVisibility(VISIBLE);
+    }
+
+    @Override public void onRefreshCancel(int scrollY, int refreshHeight, int headerHeight) {
+        mStatus.setText("取消刷新");
     }
 }

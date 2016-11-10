@@ -7,7 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 
-import com.blingbling.customrefreshlayoutlibrary.BaseRefreshLayout;
+import com.blingbling.refreshlayout.BaseRefreshLayout;
+import com.blingbling.refreshlayout.listener.OnRefreshListener;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -15,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
  * Created by BlingBling on 2016/11/1.
  */
 
-public class SimpleActivity extends AppCompatActivity implements BaseRefreshLayout.OnRefreshListener{
+public class SimpleActivity extends AppCompatActivity implements OnRefreshListener {
 
     public static final String REFRESH_LAYOUT_CLASS = "REFRESH_LAYOUT_CLASS";
     private BaseRefreshLayout refreshLayout;
@@ -33,7 +34,15 @@ public class SimpleActivity extends AppCompatActivity implements BaseRefreshLayo
     @Override public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
             @Override public void run() {
-                refreshLayout.setRefreshing(false);
+                refreshLayout.stopRefresh(true);
+            }
+        },1000);
+    }
+
+    @Override public void onLoadMore() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                refreshLayout.stopLoadMore(false);
             }
         },1000);
     }

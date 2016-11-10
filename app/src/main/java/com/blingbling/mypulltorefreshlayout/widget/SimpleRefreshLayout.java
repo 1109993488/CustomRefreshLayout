@@ -5,28 +5,29 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.blingbling.mypulltorefreshlayout.R;
-import com.blingbling.customrefreshlayoutlibrary.BaseHeaderView;
-import com.blingbling.customrefreshlayoutlibrary.BaseRefreshLayout;
+import com.blingbling.refreshlayout.BaseFooterView;
+import com.blingbling.refreshlayout.BaseHeaderView;
+import com.blingbling.refreshlayout.BaseRefreshLayout;
 
 /**
  * Created by BlingBling on 2016/11/1.
  */
 
-public class Simple2RefreshLayout extends BaseRefreshLayout{
-    public Simple2RefreshLayout(Context context) {
+public class SimpleRefreshLayout extends BaseRefreshLayout {
+    public SimpleRefreshLayout(Context context) {
         super(context);
     }
 
-    public Simple2RefreshLayout(Context context, AttributeSet attrs) {
+    public SimpleRefreshLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-    }
-
-    @Override protected boolean scrollHeaderAndContent() {
-        return true;
     }
 
     @Override protected BaseHeaderView onCreateHeaderView() {
         return new SimpleHeaderView(getContext());
+    }
+
+    @Override protected BaseFooterView onCreateFooterView() {
+        return null;
     }
 
     public static class SimpleHeaderView extends BaseHeaderView{
@@ -48,28 +49,28 @@ public class Simple2RefreshLayout extends BaseRefreshLayout{
             return R.id.refresh_header_content;
         }
 
-        @Override protected void onRefreshBefore(float progress) {
+        @Override public void onRefreshBefore(int scrollY, int refreshHeight, int headerHeight) {
             tv.setText("下拉刷新");
         }
 
-        @Override protected void onRefreshAfter(float progress) {
+        @Override public void onRefreshAfter(int scrollY, int refreshHeight, int headerHeight) {
             tv.setText("松开刷新");
         }
 
-        @Override protected void onRefreshReady(float progress) {
+        @Override public void onRefreshReady(int scrollY, int refreshHeight, int headerHeight) {
             tv.setText("准备刷新");
         }
 
-        @Override protected void onRefreshing() {
+        @Override public void onRefreshing(int scrollY, int refreshHeight, int headerHeight) {
             tv.setText("正在刷新");
         }
 
-        @Override protected void onRefreshCancel(float progress) {
-            tv.setText("取消刷新");
+        @Override public void onRefreshComplete(boolean isSuccess, int scrollY, int refreshHeight, int headerHeight) {
+            tv.setText(isSuccess?"刷新成功":"刷新失败");
         }
 
-        @Override protected void onRefreshComplete(boolean isSuccess, float progress) {
-            tv.setText(isSuccess?"刷新成功":"刷新失败");
+        @Override public void onRefreshCancel(int scrollY, int refreshHeight, int headerHeight) {
+            tv.setText("取消刷新");
         }
     }
 }
